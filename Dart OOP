@@ -1,0 +1,864 @@
+/*
+This file contains several examples for the Dart OOP session
+each block of code (separated by //----...----//) is a separate self-explaining example
+please omly uncomment one example at a time
+*/
+
+
+/*
+//----------------------------------------------------------------------------//
+class Animal
+{
+   String? name;
+   int? age;
+   double? weight;
+   void walk() => print("Animal is walking");
+   void display()
+   {
+     print ("Name: $name");
+     print ("Age: $age");
+     print ("Weight: $weight");
+   }
+
+   Animal(String newName, int animalAge, double animalWeight)
+   {
+     name = newName;
+     age = animalAge;
+     weight = animalWeight;
+   }
+}
+
+void main()
+{
+  Animal bosbos = Animal("bosbos", 2 , 7.5);
+  bosbos.display();
+
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+//----------------------------------------------------------------------------//
+//Classes
+class Animal
+{
+  String? name;
+  int? age;
+  double? weight;
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("Age: $age" );
+    print("Weight: $weight");
+  }
+}
+
+void main()
+{
+  Animal bosbos = Animal();
+  bosbos.name = "Bosbos basha";
+  bosbos.age = 2;
+  bosbos.weight = 7.5;
+
+  bosbos.displayInfo();
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+/*
+//----------------------------------------------------------------------------//
+// Constructor:
+
+class Animal
+{
+  String? name;
+  int? age;
+  double? weight;
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("Age: $age" );
+    print("Weight: $weight");
+  }
+
+  Animal(String name, int age, double weight)
+  {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+  }
+
+  //or, you may create a one line constructor
+
+ // Animal(String this.name, int this.age, double this.weight);
+}
+
+void main()
+{
+  Animal bosbos = Animal("BosBos", 2 , 7.5);
+  bosbos.displayInfo();
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Required keyword
+
+/*
+In Dart, the required keyword is used to annotate constructor parameters,
+indicating that a parameter is mandatory and must be passed in
+when creating an instance of a class. This helps ensure that objects are created
+with all required properties initialized properly.
+*/
+
+/*
+class Animal
+{
+  String name;
+  int age;
+  double weight;
+  String ownerName = "unknown";
+
+  Animal (
+      { required this.name, required this.age, required this.weight, required this.ownerName}
+      );
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("age: $age");
+    print("weight: $weight");
+    print("Owner name: $ownerName");
+
+  }
+}
+
+void main()
+{
+  Animal bosbos = Animal( age: 2, name: 'bobos',   ownerName: 'Mohamed',  weight: 7.5 );
+  bosbos.displayInfo();
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+// Constructor with optional parameters:
+/*
+optional parameters are parameters that do not have to be passed in
+when invoking a function or method.
+They provide flexibility in the number of arguments that can be passed in,
+and can be specified in two ways: positional and named.
+
+Positional optional parameters are specified in square brackets []
+and must appear at the end of the parameter list.
+ */
+
+/*
+class Animal
+{
+  String? name;
+  int? age;
+  double? weight;
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("Age: $age" );
+    print("Weight: $weight");
+  }
+
+  Animal(String name, [int age = 0, double? weight])
+  {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+  }
+
+  //or
+
+ // Animal(String this.name, [int? this.age, double? this.weight]);
+}
+
+void main()
+{
+  Animal bosbos = Animal("BosBos", 2 );
+  bosbos.displayInfo();
+  print("\n");
+  Animal basbosa = Animal("basbosa");
+  basbosa.displayInfo();
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+// Constructor with named parameters:
+/*
+named parameters are a type of optional parameter that allows you to
+specify arguments using their parameter names instead of their positions.
+Named parameters are defined by surrounding them with curly braces {}
+in the function or method signature.
+*/
+
+/*
+class Animal
+{
+  String? name;
+  int? age;
+  double? weight;
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("Age: $age" );
+    print("Weight: $weight");
+  }
+
+  Animal({ this.name, this.age = 0, this.weight})
+  {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+  }
+
+  //or
+
+ // Animal(String this.name, [int? this.age, double? this.weight]);
+}
+
+void main()
+{
+  Animal bosbos = Animal(name: "BosBos", age: 2 , weight: 7.5);
+  bosbos.displayInfo();
+  print("\n");
+  Animal basbosa = Animal(name: "basbosa");
+  basbosa.displayInfo();
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Copy Constructor:
+/*
+a copy constructor is a special constructor that creates a new instance
+of a class that is a copy of an existing instance. A copy constructor takes
+an instance of the same class as an argument,
+    and creates a new instance with the same values for its instance variables.
+*/
+
+/*
+class Animal
+{
+  String? name;
+  int? age;
+  double? weight;
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("Age: $age" );
+    print("Weight: $weight");
+  }
+
+  Animal.fromAnimal(Animal otherAnimal)
+  {
+    name = otherAnimal.name;
+    age = otherAnimal.age;
+    weight = otherAnimal.weight;
+  }
+
+  Animal(String name, int age, double weight)
+  {
+    this.name = name;
+    this.age = age;
+    this.weight = weight;
+  }
+  //or
+ // Animal(String this.name, int this.age, double this.weight);
+}
+
+void main()
+{
+  Animal bosbos = Animal("BosBos", 2 , 7.5);
+  Animal basbosa =  Animal.fromAnimal(bosbos);
+  basbosa.name = "Basbosaaaa3";
+  basbosa.displayInfo();
+}
+//----------------------------------------------------------------------------//
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Now let's practice with
+//Another class example:
+
+/*
+class User{
+  String?name;
+  String? address;
+  int? age;
+
+  User(String this.name, String this.address, int this.age);
+
+  void displayInfo()
+  {
+    print("Name = $name");
+    print("address = $address");
+    print("age = $age");
+  }
+}
+
+void main() {
+  User sampleUser1 = User("Mohamed", "Geeks Hub", 27);
+  sampleUser1.displayInfo();
+}
+
+//----------------------------------------------------------------------------//
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Data Hiding (private members)
+//using Setters and Getters
+/*
+data hiding is achieved through the use of private members.
+Private members can only be accessed from within the same library (or file),
+To define a private member in Dart, you can use the underscore _ character before the member name
+Here's an example:
+
+class Person {
+  String _name; // Private member
+
+  String getName() => _name; // Getter method for name
+  ....
+  }
+*/
+
+/*
+class User{
+  String? name;
+  int? age;
+  String? _username;
+  String? _password;
+
+  void setName(String name)
+  {
+    this.name = name;
+  }
+
+  void setAge(int age)
+  {
+    this.age = age;
+  }
+
+  void setUsername(String newUsername){
+    _username = newUsername;
+  }
+
+  void setPassword(String newPassword)
+  {
+    _password = newPassword;
+  }
+
+  String? getName()
+  {
+    return name;
+  }
+
+  void getAge() => age;
+  String? getUsername() => _username;
+  String? getPassword() => _password;
+
+
+  void displayInfo()
+  {
+    print("Name = $name");
+    print("Age = $age");
+    print("username = ${getUsername()}");
+    print("password = ${getPassword()}");
+  }
+
+  User(this.name, this.age);
+
+}
+
+
+void main()
+{
+  User sampleUser1 = User("Mohamed", 27);
+  sampleUser1.setUsername("Mohamed_Raslan123");
+  sampleUser1.setPassword("12345");
+  sampleUser1.displayInfo();
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Static keyword:
+/*
+Static members are data members and methods that belong to a class rather than an object.
+Static members are accessed using the class name instead of an object name.
+In Dart, you define a static member using the static keyword.
+*/
+
+/*
+
+
+class BankAccount
+{
+  static double balance = 0;
+
+   double getBalance() => BankAccount.balance;
+
+  void deposit(double amount)
+  {
+    balance += amount;
+  }
+
+  void withdraw(double amount)
+  {
+    balance -= amount;
+  }
+}
+
+void main()
+{
+  print(BankAccount.balance);
+  BankAccount account1 = BankAccount();
+  BankAccount account2 = BankAccount();
+  account1.deposit(100);
+  account2.withdraw(50);
+
+  print("\n");
+
+  print(account1.getBalance());
+  print(account2.getBalance());
+  print(BankAccount.balance);
+}
+*/
+
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Another example on Static:
+/*
+Static methods
+Static methods (class methods) don’t operate on an instance,
+ and thus don’t have access to this.
+  They do, however, have access to static variables.
+  As the following example shows, you invoke static methods directly on a class:
+*/
+
+/*
+import 'dart:math';
+
+class Point {
+double x, y;
+Point(this.x, this.y);
+
+static double distanceBetween(Point a, Point b) {
+double dx = a.x - b.x;
+double dy = a.y - b.y;
+return sqrt(dx * dx + dy * dy);
+}
+}
+
+void main() {
+Point a = Point(2, 2);
+Point b = Point(4, 4);
+double distance = Point.distanceBetween(a, b);
+print(distance);
+}
+
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+////Super keyword ////
+
+
+
+
+//----------------------------------------------------------------------------//
+//Inheritance:
+/*
+Inheritance is a mechanism in Dart that allows a class to inherit properties
+ and behavior from another class. The class that inherits from another class
+ is called a subclass or derived class, and the class that is being inherited
+  from is called the superclass or base class.
+
+To create a subclass in Dart, you can use the extends keyword
+followed by the name of the superclass. Here's an example:
+ */
+
+
+ /*
+class ParentClass
+{
+  void Func()
+  {
+    print("Hello from the parent class");
+  }
+}
+
+class ChildClass extends ParentClass
+{
+
+  void Func()
+  {
+    super.Func();
+    print("Hello from the child class");
+  }
+}
+
+void main()
+{
+  ChildClass myClass = ChildClass();
+  myClass.Func();
+
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//another inheritance example
+/*
+class Animal
+{
+  String? name;
+  int? age;
+  double? weight;
+  String ownerName = "unkown";
+
+  Animal (
+      {
+        required String this.name,
+        required int this.age,
+        required double this.weight,
+        required String this.ownerName
+      }
+      );
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("age: $age");
+    print("weight: $weight");
+    print("Owner name: $ownerName");
+
+  }
+}
+
+class Cat extends Animal
+{
+  Cat({required super.name, required super.age, required super.weight, required super.ownerName});
+
+  void Meow() => print("Meeoow");
+
+}
+
+class Dog extends Animal
+{
+  Dog({required super.name, required super.age, required super.weight, required super.ownerName});
+
+  void bark() => print("3ao 3ao");
+}
+
+
+void main ()
+{
+  Cat bosbos = Cat(name: "bosbos", age: 2, weight: 7.5, ownerName: "Mohamed" );
+  bosbos.displayInfo();
+  bosbos.Meow();
+
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Multi-level Inheritance:
+
+/*
+In Dart, multi-level inheritance refers to the ability of a subclass to inherit from a superclass,
+which itself is a subclass of another superclass.
+This means that the subclass can access properties and methods
+defined in both its immediate superclass and its grandparent superclass.
+ */
+
+/*
+class Animal
+{
+  String name;
+  int age;
+  double weight;
+  String ownerName = "unknown";
+
+  Animal (
+      {required this.name, required this.age, required this.weight, required this.ownerName}
+      );
+
+  void displayInfo()
+  {
+    print("Name: $name");
+    print("age: $age");
+    print("weight: $weight");
+    print("Owner name: $ownerName");
+
+  }
+}
+
+class Cat extends Animal
+{
+  Cat({required super.name, required super.age, required super.weight, required super.ownerName});
+
+  void Meow() => print("Meow");
+
+}
+
+class IranianCat extends Cat
+{
+  IranianCat({required super.name, required super.age, required super.weight, required super.ownerName});
+  void displayType() => print("This is an  Iranian cat");
+}
+
+class Bobos extends IranianCat
+{
+  Bobos({required super.name, required super.age, required super.weight, required super.ownerName});
+
+}
+
+
+void main()
+{
+  IranianCat bosbos = IranianCat(name: 'bobos',  age: 2,  ownerName: 'Mohamed',  weight: 7.5 );
+  bosbos.displayInfo();
+  bosbos.Meow();
+  bosbos.displayType();
+
+}
+*/
+//----------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------------------------------//
+//Functions Overriding:
+/*
+class Animal {
+  void eat() {
+    print("Animal is eating");
+  }
+
+  void move() {
+    print("Animal is moving");
+  }
+}
+
+// Inherited class
+class Dog extends Animal {
+  //This method overrides the move method of the Animal (parent class)
+
+  @override
+  void move() {
+    print("Dog is moving");
+  }
+
+  void bark() {
+    print("Dog is barking");
+  }
+}
+
+void main() {
+    Animal bosbos = Animal();
+    bosbos.move();
+    Dog Dogsy = Dog();
+    Dogsy.move();
+}
+*/
+
+
+//----------------------------------------------------------------------------//
