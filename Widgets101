@@ -1609,6 +1609,7 @@ class Home extends StatelessWidget {
 //---------------------------------------------------------//
 //first mini project
 /*
+
 void main() {
   runApp(const Home());
 }
@@ -1619,112 +1620,118 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          leading: const BackButton(
-            color: Colors.white,
-          ),
-          title: const Center(child: Text("This is my first app")),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.more_vert),
-              color: Colors.white,
-            )
-          ],
-        ),
-
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-        Center(
-        child: Container(
-        height: 200,
-            child: Image.network("https://th.bing.com/th/id/R.b667588b7aa776a5ba03db10bb1b28cc?rik=VVYsVX6qJcX45A&pid=ImgRaw&r=0")),
-        ),
-
-            const SizedBox(height: 40,),
-
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  style: const TextStyle(color: Colors.black),
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Email",
-                    labelText: "Email",
-                    prefixIcon: const Icon(Icons.email),
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 10,),
-
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  style: const TextStyle(color: Colors.black),
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Password",
-                    labelText: "Password",
-                    prefixIcon: const Icon(Icons.lock),
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 40,),
-
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: const StadiumBorder(),
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                ),
-                onPressed: () {
-                  if (kDebugMode) {
-                    print('Button pressed');
-                  }
-                },
-                child: const Text('Login'),
-              ),
-            ),
-
-            const SizedBox(height: 40,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:  [
-                const Text("Don't have an account?",
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-
-                TextButton(onPressed: (){},
-                    child: const Text("Signup",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.red
-                      ),
-                    ))
-
+      home:
+      DefaultTabController(
+        length: 2,  //number of tabBar tabs
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blue,
+            leading: const BackButton(),
+            title: const Center(
+                child: Text(
+                  "This is my first app",
+                )),
+            actions: const [Icon(Icons.more_vert),SizedBox(width: 5,)],
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.login), text: "SignIn"),
+                Tab(icon: Icon(Icons.app_registration), text: "Register")
               ],
-            )
-          ],
-        ),
+            ),
+          ),
 
+
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              Center(
+                child: Container(
+                    height: 200,
+                    child: Image.network("https://th.bing.com/th/id/R.b667588b7aa776a5ba03db10bb1b28cc?rik=VVYsVX6qJcX45A&pid=ImgRaw&r=0")),
+              ),
+
+              const SizedBox(height: 40,),
+
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    style: const TextStyle(color: Colors.black),
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      hintText: "Email",
+                      labelText: "Email",
+                      prefixIcon: const Icon(Icons.email),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 10,),
+
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    style: const TextStyle(color: Colors.black),
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      hintText: "Password",
+                      labelText: "Password",
+                      prefixIcon: const Icon(Icons.lock),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 40,),
+
+              Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  ),
+                  onPressed: () {
+                    if (kDebugMode) {
+                      print('Login button pressed');
+                    }
+                  },
+                  child: const Text('Login'),
+                ),
+              ),
+
+              const SizedBox(height: 40,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:  [
+                  const Text("Don't have an account?",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+
+                  TextButton(onPressed: (){},
+                      child: const Text("Signup",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.red
+                        ),
+                      ))
+
+                ],
+              )
+            ],
+          ),
+
+        ),
       ),
     );
 
