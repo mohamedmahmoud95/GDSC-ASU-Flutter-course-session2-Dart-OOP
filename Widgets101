@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 //---------------------------------------------------------//
 /*
@@ -15,7 +16,7 @@ Content:
 2. Text widget
 3. AppBar
 4. TabBar
-5. Container
+5. Container & borders
 6. Rows and Columns
 7. Stateless vs Stateful widgets
 8. Buttons
@@ -27,10 +28,9 @@ Content:
 
 
 
+
 //---------------------------------------------------------//
-/*
-//basic app structurs
-//just to see How fast can we build an app with Flutter?
+//How fast can we build an app with Flutter?
 /*
 void main() {
   runApp(MaterialApp(
@@ -38,7 +38,7 @@ void main() {
     appBar: AppBar(
       title: const Text('This is my first app'),
     ),
-    body: const Center(child: Text('GDSC are AWESOME')),
+    body: Center(child: Container(height:300, width:300,child: Image.asset("assets/yassin.png"))),
     floatingActionButton: FloatingActionButton(
       child: const Text("button"),
       onPressed: () {/*do something */},
@@ -47,10 +47,6 @@ void main() {
 }
 */
 //---------------------------------------------------------//
-
-
-
-
 
 //---------------------------------------------------------//
 //MaterialApp with text
@@ -62,9 +58,11 @@ void main() {
   );
 }
 */
+
+
+
+
 //---------------------------------------------------------//
-
-
 
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
@@ -85,6 +83,8 @@ void main() {
 }
 */
 //---------------------------------------------------------//
+
+
 
 
 
@@ -112,15 +112,11 @@ void main() {
 
 
 
-
-
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
 //appBar widget
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
-
-
 
 
 
@@ -139,7 +135,6 @@ void main() {
 }
 */
 //---------------------------------------------------------//
-
 
 
 
@@ -254,7 +249,6 @@ void main() {
 
 
 
-
 //---------------------------------------------------------//
 //basic TabBar widget
 /*
@@ -333,7 +327,6 @@ void main() {
 
 
 
-
 //---------------------------------------------------------//
 //body:
 /*
@@ -344,10 +337,13 @@ void main()
     home: Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        centerTitle: true,
         leading: const BackButton(color: Colors.white,),
         title: const Center(child: Text("This is my first app")),
-        actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.more_vert), color: Colors.white,)
+        actions: const[
+         Icon(Icons.more_vert),
+         Icon(Icons.add),
+          Icon(Icons.settings),
         ],
       ),
     body:  Center(
@@ -367,10 +363,6 @@ void main()
 }
 */
 //---------------------------------------------------------//
-
-
-
-
 
 //---------------------------------------------------------//
 //Column:
@@ -403,7 +395,6 @@ void main()
 }
 */
 //---------------------------------------------------------//
-
 
 
 
@@ -441,8 +432,6 @@ void main()
 //---------------------------------------------------------//
 
 
-
-
 /*
 The RenderFlex error in Flutter
 occurs when widgets are sized in a way
@@ -456,8 +445,6 @@ dividing into multiple rows or columns,
 using the ListView widget,
 or using Expanded or Flexible widgets.
  */
-
-
 
 
 //---------------------------------------------------------//
@@ -512,6 +499,13 @@ void main() {
 
 
 
+//---------------------------------------------------------////---------------------------------------------------------//
+//---------------------------------------------------------////---------------------------------------------------------//
+//Container widget
+//---------------------------------------------------------////---------------------------------------------------------//
+//---------------------------------------------------------////---------------------------------------------------------//
+
+
 
 //---------------------------------------------------------//
 //Container widget
@@ -556,6 +550,135 @@ void main() {
 }
  */
 //---------------------------------------------------------//
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------////-------------------------------------------------------------//
+//--------------------- Adding borders to containers ------------//
+//-------------------------------------------------------------////-------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------//
+//Adding borders to containers
+/*
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          leading: const BackButton(),
+          title: const Text("Circular avatar"),
+          centerTitle: true,
+        ),
+
+        body:  Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              //creating borders by wrapping another container with
+              // another container of different color
+              //must add padding or margin
+
+              Container(
+                color: Colors.blue,
+
+                child: Container(
+                  margin: const EdgeInsets.all(2), color: Colors.white,
+                  padding: const EdgeInsets.all(16.0),
+
+                  child: const Text(
+                    "Container 0",
+                    style: TextStyle(fontSize: 35.0),
+                  ),
+                ),
+              ),
+
+
+              const SizedBox(height: 50,),
+
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration:  BoxDecoration(
+                  border: Border.all(width: 2, color: Colors.blue),
+                ),
+
+                child: const Text(
+                  "Container 1",
+                  style: TextStyle(fontSize: 35.0),
+                ),
+              ),
+
+              const SizedBox(height: 50,),
+
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2,color: Colors.blue),
+                  borderRadius: const BorderRadius.all(
+                      Radius.circular(20)),
+                ),
+                  child: const Text("Container 2", style: TextStyle(fontSize: 35),),
+              ),
+
+              const SizedBox(height: 50,),
+
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  border: Border.all(width: 2,color: Colors.blue),
+                  borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(30)),
+                ),
+                child: const Text("Container 3", style: TextStyle(fontSize: 35),),
+              ),
+
+              const SizedBox(height: 50,),
+
+              Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: const BoxDecoration(
+                  border: Border(
+                    left: BorderSide(color: Colors.blue, width: 2.0,
+                    ),),
+                ),
+
+                child: const Text("Container 4", style: TextStyle(fontSize: 34.0),),
+              ),
+
+
+                const SizedBox(height: 50,),
+            ],
+          ),
+        )
+      ),
+    );
+  }
+}
+*/
+//-------------------------------------------------------------//
+
 
 
 
@@ -743,7 +866,6 @@ void main() {
 
 
 
-
 //---------------------------------------------------------//
 //Row of  containers
 /*
@@ -793,7 +915,6 @@ void main() {
 }
 */
 //---------------------------------------------------------//
-
 
 
 
@@ -928,10 +1049,6 @@ void main() {
 */
 //---------------------------------------------------------//
 
-
-
-
-
 //---------------------------------------------------------//
 //RenderFlex solution with Expanded
 /*
@@ -1041,19 +1158,11 @@ void main() {
 */
 //---------------------------------------------------------//
 
-
-
-
-
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
 //Buttons
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
-
-
-
-
 
 //---------------------------------------------------------//
 //Elevated Button
@@ -1100,10 +1209,8 @@ void main() {
   */
 //---------------------------------------------------------//
 
-
-
-
-
+//---------------------------------------------------------//
+//
 
 //---------------------------------------------------------//
 //Stateless widget  (stless + tab)
@@ -1155,10 +1262,6 @@ class Home extends StatelessWidget {
 }
  */
 //---------------------------------------------------------//
-
-
-
-
 
 //---------------------------------------------------------//
 //stateful widgets
@@ -1214,10 +1317,6 @@ class _HomeState extends State<Home> {
 }
  */
 //---------------------------------------------------------//
-
-
-
-
 
 //---------------------------------------------------------//
 //TextButton
@@ -1281,10 +1380,6 @@ class Home extends StatelessWidget {
  */
 //---------------------------------------------------------//
 
-
-
-
-
 //---------------------------------------------------------//
 //FloatingActionButton
 /*
@@ -1345,10 +1440,6 @@ class Home extends StatelessWidget {
 */
 //---------------------------------------------------------//
 
-
-
-
-
 //---------------------------------------------------------//
 //Elevated button with a Stadium border shape
 /*
@@ -1381,8 +1472,12 @@ class _HomeState extends State<Home> {
               )
             ],
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {  },
+            child: const Icon(Icons.add),
 
-          body: Column(
+          ),
+            body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
@@ -1408,31 +1503,26 @@ class _HomeState extends State<Home> {
 */
 //---------------------------------------------------------//
 
-
-
-
-
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
 //TextFields
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
 
-
-
-
-
 //---------------------------------------------------------//
 //
 /*
 void main() {
-  runApp(const Home());
+  runApp( Home());
 }
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  String? userName;
+   Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String userName;
+    String Password;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -1455,10 +1545,16 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
+
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  onChanged: (value){
+                    setSate(){
+                      this.userName = value;
+                    }
+                  },
                   style: const TextStyle(color: Colors.black),
                   obscureText: false,
                   decoration: InputDecoration(
@@ -1468,6 +1564,7 @@ class Home extends StatelessWidget {
                     hintText: "Email",
                     labelText: "Email",
                     prefixIcon: const Icon(Icons.email),
+                
                   ),
                 ),
               ),
@@ -1516,27 +1613,11 @@ class Home extends StatelessWidget {
 */
 //---------------------------------------------------------//
 
-
-
-
-
-
-
-
-
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
 //Images
 //---------------------------------------------------------////---------------------------------------------------------//
 //---------------------------------------------------------////---------------------------------------------------------//
-
-
-
-
-
-
-
-
 
 //---------------------------------------------------------//
 //Image.network
@@ -1569,30 +1650,36 @@ class Home extends StatelessWidget {
           ),
 
 
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Container(
-                    height: 200,
-                    child: Image.network("https://th.bing.com/th/id/R.b667588b7aa776a5ba03db10bb1b28cc?rik=VVYsVX6qJcX45A&pid=ImgRaw&r=0")),
-                   //child: Image.asset("assets/Flutter_logo.png"),
-              ),
-            ],
-          ),
+           body: Center(
+             child: SizedBox(
+              height: 200,
+             width: 200,
+             child:
+                 Image.asset("assets/google.png")
+            //  Image.network("https://th.bing.com/th/id/R.b667588b7aa776a5ba03db10bb1b28cc?rik=VVYsVX6qJcX45A&pid=ImgRaw&r=0")
+             ),
+           ), //
 
-
+          // 
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     Center(
+          //       child: SizedBox(
+          //           height: 200,
+          //           child: Image.network(
+          //               "https://th.bing.com/th/id/R.b667588b7aa776a5ba03db10bb1b28cc?rik=VVYsVX6qJcX45A&pid=ImgRaw&r=0")),
+          //       //child: Image.asset("assets/Flutter_logo.png"),
+          //     ),
+          //   ],
+          // ),
         )
     );
   }
 }
 */
 //---------------------------------------------------------//
-
-
-
-
-
+ 
 
 
 //---------------------------------------------------------////---------------------------------------------------------//
@@ -1602,14 +1689,9 @@ class Home extends StatelessWidget {
 //---------------------------------------------------------////---------------------------------------------------------//
 
 
-
-
-
-
 //---------------------------------------------------------//
 //first mini project
 /*
-
 void main() {
   runApp(const Home());
 }
@@ -1625,21 +1707,38 @@ class Home extends StatelessWidget {
         length: 2,  //number of tabBar tabs
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blue,
             leading: const BackButton(),
             title: const Center(
                 child: Text(
                   "This is my first app",
                 )),
-            actions: const [Icon(Icons.more_vert),SizedBox(width: 5,)],
             bottom: const TabBar(
               tabs: [
-                Tab(icon: Icon(Icons.login), text: "SignIn"),
-                Tab(icon: Icon(Icons.app_registration), text: "Register")
+                Tab(icon: Icon(Icons.home), text: "Tab 1"),
+                Tab(icon: Icon(Icons.info), text: "Tab 2")
               ],
             ),
           ),
-
+          // body: const TabBarView(
+          // children: [
+          // //FirstScreen(),
+          // //SecondScreen(),
+          // ],
+          // ),Scaffold(
+          //     backgroundColor: Colors.white,
+          //     appBar: AppBar(
+          //       leading: const BackButton(
+          //         color: Colors.white,
+          //       ),
+          //       title: const Center(child: Text("This is my first app")),
+          //       actions: [
+          //         IconButton(
+          //           onPressed: () {},
+          //           icon: const Icon(Icons.more_vert),
+          //           color: Colors.white,
+          //         )
+          //       ],
+          //     ),
 
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1737,6 +1836,127 @@ class Home extends StatelessWidget {
 
   }
 }
- */
+*/
+
 //---------------------------------------------------------//
+
+
+
+
+
+//---------------------------------------------------------//
+/*
+void main()
+{
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            leading: const BackButton(),
+            title: const Text("Welcome to my app"),
+            actions: const [
+              Icon(Icons.more_vert),
+            ],
+            bottom: const TabBar(
+              tabs: [
+               Tab(child: Icon(Icons.login),),
+               Tab(child: Icon(Icons.app_registration),),
+              ],
+            ),
+
+          ),
+
+            body:
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    height: 200,
+                      width: 200,
+                      child: Image.network("https://th.bing.com/th/id/R.b667588b7aa776a5ba03db10bb1b28cc?rik=VVYsVX6qJcX45A&pid=ImgRaw&r=0")),
+
+              Column(
+                children: [
+                  TextField(
+                    style: const TextStyle(color: Colors.black),
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      hintText: "Email",
+                      labelText: "Email",
+                      prefixIcon: const Icon(Icons.email),
+
+                    ),
+                  ),
+
+
+                  const SizedBox(height: 30,),
+                  //password text field
+                  TextField(
+                    style: const TextStyle(color: Colors.black),
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      hintText: "Password",
+                      labelText: "Password",
+                      prefixIcon: const Icon(Icons.key),
+                    ),
+                  ),
+
+                ],
+              ),
+                  ElevatedButton(
+                      onPressed: (){if (kDebugMode) {
+                        print("logged in");
+                      }},
+                    style: ElevatedButton.styleFrom(
+                      shape: const StadiumBorder(),
+                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    ),
+                      child:const Text("Login") ,
+                  ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  children: [
+                    const Text("Don't have an account?",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),),
+                    TextButton(onPressed: (){},
+                        child: const Text("Sign up",style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.red
+                        ),))
+                  ],
+                )
+
+                ],
+
+              ),
+            ),
+
+      ),
+      ),
+    );
+
+  }
+}
+*/
 
